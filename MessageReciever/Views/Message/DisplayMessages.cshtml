@@ -1,0 +1,38 @@
+﻿@model List<MessageReciever.Models.MessageModel>
+
+<script>
+    $(document).ready(function () {
+        $('#sortableTable').dataTable();
+    });
+</script>
+
+<div class="table-responsive">
+    <table id="sortableTable" class="display table">
+        <thead>
+            <tr>
+                <th>
+                    Recieved
+                </th>
+                <th>
+                    Message
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        @item.Msg
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
