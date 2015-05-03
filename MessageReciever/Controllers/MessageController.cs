@@ -40,7 +40,7 @@ namespace MessageReciever.Controllers
             }
             catch (Exception ex)
             {                                
-                RedirectToAction("Index");
+                RedirectToAction("DisplayMessages");
             }                                               
         }       
     }

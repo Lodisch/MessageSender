@@ -19,14 +19,16 @@ namespace MessageSender
         }
 
         private static void SendMessage(IHubProxy _msgHub)
-        {            
+        {
             try
-            {               
+            {
                 string message = null;
                 while ((message = Console.ReadLine()) != null)
                 {
-                    _msgHub.On("RecieveDate", q => Console.WriteLine(q));
-                    _msgHub.Invoke("MessageReciever", message, DateTime.Now).Wait();                    
+                    _msgHub.Invoke("MessageReciever", message, DateTime.Now).Wait();
+
+                    Console.WriteLine("Message [{0}] has been sent at {1}", message, DateTime.Now);
+                    Console.WriteLine("Compose again: ");
                 }
             }
             catch (Exception ex)
@@ -34,7 +36,6 @@ namespace MessageSender
                 var exmsg = ex.Message;
                 _msgHub.On("ExceptionMsg", q => Console.WriteLine(q));
                 _msgHub.Invoke("GetExceptionMessage", exmsg).Wait();
-                throw;
             }
         }
 
