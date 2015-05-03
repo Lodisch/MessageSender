@@ -1,38 +1,36 @@
 ﻿@model List<MessageReciever.Models.MessageModel>
 
-<script>
-    $(document).ready(function () {
-        $('#sortableTable').dataTable();
-    });
-</script>
+<div style="margin-top:1%">
+    <button id="refreshMsgDisplay" class="btn btn-default btn-lg btn-block">Refresh</button>
+</div>
 
-<div class="table-responsive">
+<div class="table-responsive" style="margin-top: 1%;">
     <table id="sortableTable" class="display table">
         <thead>
-            <tr>
-                <th>
-                    Recieved
-                </th>
-                <th>
-                    Message
-                </th>
-            </tr>
+        <tr>
+            <th>
+                Recieved At
+            </th>
+            <th>
+                Message
+            </th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @item.Date
-                    </td>
-                    <td>
-                        @item.Msg
-                    </td>
-                </tr>
-            }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Date
+                </td>
+                <td>
+                    @item.Msg
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
-
 </div>
+
 
 

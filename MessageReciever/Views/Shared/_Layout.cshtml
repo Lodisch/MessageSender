@@ -12,24 +12,27 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/CustomScripts/LoadAsDatatable.js"></script>
+    <script src="~/Scripts/CustomScripts/RefreshMessages.js"></script>
+   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header center">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Message Reciever", "Index", "Message", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
             </div>
+            @Html.ActionLink("Message Reciever", "DisplayMessages", "Message", new {  @class = "navbar-brand" })            
         </div>
     </div>
-
+    
     <div class="container body-content">
         @RenderBody()
         <hr />

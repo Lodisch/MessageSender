@@ -14,14 +14,27 @@ namespace MessageSender
         {
             Console.WriteLine("Compose message: ");
             var _msgHub = ConnectToHub();
-            
-            string message = null;
-            
-            
-            while ((message = Console.ReadLine()) != null)
-            {              
-                _msgHub.On("RecieveDate", q => Console.WriteLine(q));
-                _msgHub.Invoke("MessageReciever", message, DateTime.Now).Wait();               
+
+            SendMessage(_msgHub);
+        }
+
+        private static void SendMessage(IHubProxy _msgHub)
+        {            
+            try
+            {               
+                string message = null;
+                while ((message = Console.ReadLine()) != null)
+                {
+                    _msgHub.On("RecieveDate", q => Console.WriteLine(q));
+                    _msgHub.Invoke("MessageReciever", message, DateTime.Now).Wait();                    
+                }
+            }
+            catch (Exception ex)
+            {
+                var exmsg = ex.Message;
+                _msgHub.On("ExceptionMsg", q => Console.WriteLine(q));
+                _msgHub.Invoke("GetExceptionMessage", exmsg).Wait();
+                throw;
             }
         }
 

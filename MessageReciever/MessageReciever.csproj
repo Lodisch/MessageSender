@@ -216,6 +216,9 @@
     <Content Include="Content\DataTables\css\dataTables.responsive.scss" />
     <Content Include="Content\DataTables\css\dataTables.jqueryui.scss" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\CustomScripts\LoadAsDatatable.js" />
+    <Content Include="Scripts\CustomScripts\LoadMessageDisplay.js" />
+    <Content Include="Scripts\CustomScripts\RefreshMessages.js" />
     <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
     <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
     <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />

@@ -1,17 +1,5 @@
-﻿@model List<MessageReciever.Models.MessageModel>
-
-<script>
-    $(document).ready(function () {
-        $('#displayMessages').click(function (e) {
-            $('#messageDisplay').load('/Message/DisplayMessages');
-        });
-    });
-</script>
-
-
-<div style="margin-top:1%">
-    <button id="displayMessages">Display Messages</button>
-</div>
+﻿
+<script src="~/Scripts/CustomScripts/LoadMessageDisplay.js"></script>
 
 <div style="margin-top:1%">
     <div id="messageDisplay"></div>

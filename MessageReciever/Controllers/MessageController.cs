@@ -11,30 +11,37 @@ namespace MessageReciever.Controllers
 {
     public class MessageController : Controller
     {
-        public MessageDbEntities context = new MessageDbEntities(); 
+        public MessageDbEntities context = new MessageDbEntities();
         public const string url = "http://localhost:8080/";
-        
+
         public ActionResult Index()
         {
             GetConnection();
-            
+          
             return View();
         }
 
         public ActionResult DisplayMessages()
-        {
+        {            
             var messages = context.MessageTables.Select(message => new MessageModel
             {
-                Msg = message.Message, Date = message.RecievedAt
+                Msg = message.Message,
+                Date = message.RecievedAt,                 
             }).ToList();
-           
-            return View(messages);
-        }
 
-        private void GetConnection()
-        {          
-            WebApp.Start<Startup>(url);
-          
-        }
+            return View(messages);
+        }       
+
+        public void GetConnection()
+        {
+            try
+            {               
+                WebApp.Start<Startup>(url);                
+            }
+            catch (Exception ex)
+            {                                
+                RedirectToAction("Index");
+            }                                               
+        }       
     }
 }
